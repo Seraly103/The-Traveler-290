@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CollectableController : MonoBehaviour
 {
+<<<<<<< HEAD
     [SerializeField] private string playerTag = "Player";
     [SerializeField] private bool useProximityFallback = true;
     [SerializeField] private float proximityRadius = 1.25f;
@@ -115,5 +116,17 @@ public class CollectableController : MonoBehaviour
         {
             showConfirmation = false;
         }
+=======
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+>>>>>>> parent of bac5c3a (Inventory system)
     }
 }
