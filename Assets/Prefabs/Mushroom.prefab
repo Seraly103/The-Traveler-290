@@ -11,9 +11,12 @@ GameObject:
   - component: {fileID: 3476846478308771780}
   - component: {fileID: 5922795474163413779}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - component: {fileID: 4591132301145785132}
   - component: {fileID: -5981191062981255022}
   - component: {fileID: 8304372459676194772}
+=======
+>>>>>>> parent of bac5c3a (Inventory system)
 =======
 >>>>>>> parent of bac5c3a (Inventory system)
   m_Layer: 0
@@ -93,6 +96,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!50 &4591132301145785132
 Rigidbody2D:
@@ -180,5 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
+=======
+>>>>>>> parent of bac5c3a (Inventory system)
 =======
 >>>>>>> parent of bac5c3a (Inventory system)

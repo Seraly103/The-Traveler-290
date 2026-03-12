@@ -429,7 +429,10 @@ Transform:
   - {fileID: 1639934035}
   - {fileID: 276243606}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 1018080658}
+=======
+>>>>>>> parent of bac5c3a (Inventory system)
 =======
 >>>>>>> parent of bac5c3a (Inventory system)
   m_Father: {fileID: 0}
@@ -439,6 +442,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3476846478308771780, guid: 78b07c10c6e0ed54689894afc95c025b, type: 3}
   m_PrefabInstance: {fileID: 2181490320987536292}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!1 &499710477
 GameObject:
@@ -514,6 +518,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of bac5c3a (Inventory system)
 =======
 >>>>>>> parent of bac5c3a (Inventory system)
 --- !u!1 &591860447
@@ -667,6 +673,7 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!1 &886363198
 GameObject:
@@ -968,11 +975,14 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 =======
 >>>>>>> parent of bac5c3a (Inventory system)
+=======
+>>>>>>> parent of bac5c3a (Inventory system)
 --- !u!4 &1639934035 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6161220139003054740, guid: 9d435c2fa5a8aa84cb1bd61c79eb66dc, type: 3}
   m_PrefabInstance: {fileID: 197029253}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!1 &1680871121
 GameObject:
@@ -1148,6 +1158,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1018080658}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of bac5c3a (Inventory system)
 =======
 >>>>>>> parent of bac5c3a (Inventory system)
 --- !u!4 &2123414830 stripped
@@ -1564,7 +1576,10 @@ SceneRoots:
   - {fileID: 1971755566157777830}
   - {fileID: 251895661}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 3461360315039746121}
   - {fileID: 499710479}
+=======
+>>>>>>> parent of bac5c3a (Inventory system)
 =======
 >>>>>>> parent of bac5c3a (Inventory system)
