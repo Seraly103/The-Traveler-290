@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     public GameObject world;
+    public bool movementLocked;
 
     [Header("Footsteps")]
     [SerializeField] private AudioSource footstepSource;
@@ -39,6 +40,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (movementLocked)
+        {
+            IsWalking = false;
+            anim.SetBool("IsWalking", false);
+            anim.SetBool("IsWalkingLeft", false);
+            anim.SetBool("IsWalkingRight", false);
+            StopFootsteps();
+            return;
+        }
+
         bool moveLeft = Input.GetKey(KeyCode.A);
         bool moveRight = Input.GetKey(KeyCode.D);
         IsWalking = moveLeft || moveRight;
