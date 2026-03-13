@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Footsteps")]
     [SerializeField] private AudioSource footstepSource;
-    [SerializeField] private VideoPlayer footstepVideoPlayer;
+
     [SerializeField] private float footstepStartTimeSeconds = 2f;
 
     SpriteRenderer sr;
