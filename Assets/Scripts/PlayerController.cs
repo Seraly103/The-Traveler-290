@@ -6,10 +6,13 @@ public class PlayerController : MonoBehaviour
     public GameObject world;
     public bool movementLocked = false;
 
-    [Header("Footsteps")]
-    [SerializeField] private AudioSource footstepSource;
+    bool isWalking = false;
 
-    [SerializeField] private float footstepStartTimeSeconds = 2f;
+    [Header("Footsteps")]
+    
+    AudioSource footSteps;
+
+    
 
     SpriteRenderer sr;
 
@@ -20,23 +23,21 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        IsWalking = false;
+        
         anim = GetComponent<Animator>();
+        footSteps = GetComponent<AudioSource>();
+        footSteps.loop = true;
+        footSteps.Stop();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (movementLocked)
-        {
-            IsWalking = false;
-            anim.SetBool("IsWalking", false);
-            return;
-        }
+        
 
         bool moveLeft = Input.GetKey(KeyCode.A);
         bool moveRight = Input.GetKey(KeyCode.D);
-        IsWalking = moveLeft || moveRight;
+        isWalking = moveLeft || moveRight;
 
 
         if(Input.GetKey(KeyCode.A))
@@ -46,6 +47,8 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("IsWalking", true);
             world.transform.position += Vector3.right * speed * Time.deltaTime;
             sr.flipX = false;
+           
+            
         }
         
         
@@ -57,8 +60,26 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("IsWalking", true);
             world.transform.position += Vector3.left * speed * Time.deltaTime;
             sr.flipX = true;
+            
         }
-        
+
+        if(!isWalking)
+        {
+            anim.SetBool("IsWalking", false);
+        }
+
+        // FOOTSTEP AUDIO
+        if(isWalking)
+        {
+            if(!footSteps.isPlaying)
+            {
+                footSteps.Play();
+            }
+        }
+        else
+        {
+            footSteps.Stop();
+        }
         
     }
 }
