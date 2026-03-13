@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3476846478308771780}
   - component: {fileID: 5922795474163413779}
-  - component: {fileID: 4591132301145785132}
-  - component: {fileID: -5981191062981255022}
-  - component: {fileID: 8304372459676194772}
+  - component: {fileID: 7391307912770627204}
+  - component: {fileID: 8244412101585599916}
   m_Layer: 0
   m_Name: Mushroom
   m_TagString: Untagged
@@ -90,34 +89,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &4591132301145785132
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5489326413670971997}
-  m_BodyType: 0
-  m_Simulated: 0
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &-5981191062981255022
+--- !u!61 &7391307912770627204
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,7 +135,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.5902083, y: 1.51}
   m_EdgeRadius: 0
---- !u!114 &8304372459676194772
+--- !u!114 &8244412101585599916
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,7 +144,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5489326413670971997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4703caaedf0b36e4eb21dc579d29585b, type: 3}
+  m_Script: {fileID: 11500000, guid: e878c43dded7b8c41ba83316bc12ca2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTag: Player
+  itemType: Mushroom
