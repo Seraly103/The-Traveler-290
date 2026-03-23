@@ -1,17 +1,54 @@
 using UnityEngine;
+using System.Collections;
+
 
 public class GapTeleport : MonoBehaviour
 {
-    public Transform destination;
-    public GameObject world;
-    public GameObject popup;
+    public GameObject leftDestination;
+    public GameObject rightDestination;
+    public GameObject leftPopup;
+    public GameObject rightPopup;
+
+    public GameObject player;
+
+    public Vector3 teleportOffset = Vector3.zero;
 
     public void Teleport()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-        player.transform.position = destination.position;
-
-        popup.SetActive(false);
+        StartCoroutine(TeleportRoutine(leftDestination, leftPopup));
     }
+
+    public void TeleportLeft()
+    {
+        StartCoroutine(TeleportRoutine(leftDestination, leftPopup));
+    }
+
+    public void TeleportRight()
+    {
+        StartCoroutine(TeleportRoutine(rightDestination, rightPopup));
+    }
+
+    IEnumerator TeleportRoutine(GameObject destination, GameObject popupToDisable)
+    {
+        PlayerController pc = player.GetComponent<PlayerController>();
+
+        // LOCK movement
+        pc.movementLocked = true;
+
+        // TELEPORT
+        Vector3 target = destination.transform.position + teleportOffset;
+        target.z = player.transform.position.z;
+        player.transform.position = target;
+
+        // wait ONE frame so world doesn't override it
+        yield return null;
+
+        // UNLOCK movement
+        pc.movementLocked = false;
+
+        if (popupToDisable != null)
+            popupToDisable.SetActive(false);
+    }
+
+
 }

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     AudioSource footSteps;
 
     
+    
 
     SpriteRenderer sr;
 
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         
+        if(movementLocked) return;
 
         bool moveLeft = Input.GetKey(KeyCode.A);
         bool moveRight = Input.GetKey(KeyCode.D);
