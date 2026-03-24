@@ -30,6 +30,11 @@ public class GapTeleport : MonoBehaviour
 
     IEnumerator TeleportRoutine(GameObject destination, GameObject popupToDisable)
     {
+        if (player == null || destination == null)
+        {
+            yield break;
+        }
+
         PlayerController pc = player.GetComponent<PlayerController>();
 
         // LOCK movement
@@ -37,6 +42,7 @@ public class GapTeleport : MonoBehaviour
 
         // TELEPORT
         Vector3 target = destination.transform.position + teleportOffset;
+        target.y = player.transform.position.y;
         target.z = player.transform.position.z;
         player.transform.position = target;
 
