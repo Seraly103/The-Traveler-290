@@ -3,7 +3,6 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
     public string itemType;
-    //private InventoryManager inventoryManager;
     
     void OnTriggerEnter2D(Collider2D other)
     {
