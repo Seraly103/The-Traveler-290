@@ -1,0 +1,187 @@
+fileFormatVersion: 2
+guid: 6a0c807480789244da9d61ca3550671e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4999728353021416440
+    second: Footsteps_0
+  - first:
+      213: -6300165327036310905
+    second: Footsteps_1
+  - first:
+      213: -5785339758724122060
+    second: Footsteps_2
+  - first:
+      213: -2782405201900423828
+    second: Footsteps_3
+  - first:
+      213: 7024993143479709342
+    second: Footsteps_4
+  - first:
+      213: 7445575166012349770
+    second: Footsteps_5
+  - first:
+      213: 3303056875368486805
+    second: Footsteps_6
+  - first:
+      213: 8504701815137997025
+    second: Footsteps_7
+  - first:
+      213: 8755839280656477581
+    second: Footsteps_8
+  - first:
+      213: -2850980436192267792
+    second: Footsteps_9
+  - first:
+      213: 2747413187960422696
+    second: Footsteps_10
+  - first:
+      213: -8163725990909368163
+    second: Footsteps_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Footsteps_0
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 744
+        width: 278
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f35a47827a926540800000000000000
+      internalID: 4999728353021416440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 0c52ef05bb554c748af76aa0bb25fdde
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Footsteps_0: 4999728353021416440
+      Footsteps_1: -6300165327036310905
+      Footsteps_10: 2747413187960422696
+      Footsteps_11: -8163725990909368163
+      Footsteps_2: -5785339758724122060
+      Footsteps_3: -2782405201900423828
+      Footsteps_4: 7024993143479709342
+      Footsteps_5: 7445575166012349770
+      Footsteps_6: 3303056875368486805
+      Footsteps_7: 8504701815137997025
+      Footsteps_8: 8755839280656477581
+      Footsteps_9: -2850980436192267792
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
