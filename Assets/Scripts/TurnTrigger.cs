@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TurnTrigger : MonoBehaviour
 {
@@ -9,5 +10,16 @@ public class TurnTrigger : MonoBehaviour
         {
             popUp.SetActive(true);
         }
+    }
+
+    public void TeleportLeft()
+    {
+        
+    }
+        
+
+    public void TeleportRight()
+    {
+        
     }
 }
