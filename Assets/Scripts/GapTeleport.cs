@@ -5,24 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class GapTeleport : MonoBehaviour
 {
-    public GameObject leftDestination;
-    public GameObject rightDestination;
-    public GameObject leftPopup;
-    public GameObject rightPopup;
-
     public GameObject player;
 
-    
-
-    public void TeleportLeft()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        
-    }
-        
-
-    public void TeleportRight()
-    {
-        
+        if(other.CompareTag("Player"))
+        {
+            SceneManager.LoadScene("RedQueen'sEntrance");
+        }
     }
 
    

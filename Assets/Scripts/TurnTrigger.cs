@@ -12,14 +12,14 @@ public class TurnTrigger : MonoBehaviour
         }
     }
 
-    public void TeleportLeft()
+    public void TeleportForest()
     {
-        
+        SceneManager.LoadScene("ChesireForest");
     }
         
 
-    public void TeleportRight()
+    public void TeleportQueen()
     {
-        
+        SceneManager.LoadScene("RedQueen'sEntrance");
     }
 }

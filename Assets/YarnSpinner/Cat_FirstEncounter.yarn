@@ -1,0 +1,20 @@
+﻿title: Start
+---
+This is an example of a Yarn Spinner script. Write your dialogue here!
+
+<<declare $has_bow = $bow >= 1>>
+
+<<declare $can_build_chair = $has_enough_materials && $has_required_skill>>
+
+<<if $can_build_chair>>
+  Craftsman: You've got everything you need to build that chair now.
+<<else>>
+  <<if !$has_enough_materials>>
+    Craftsman: You'll need more materials first.
+  <<else>>
+    Craftsman: Your carpentry skills aren't quite there yet.
+  <<endif>>
+<<endif>>
+
+
+===

@@ -4780,9 +4780,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1695658101}
-        m_TargetAssemblyTypeName: GapTeleport, Assembly-CSharp
-        m_MethodName: Teleport
+      - m_Target: {fileID: 1695658100}
+        m_TargetAssemblyTypeName: TurnTrigger, Assembly-CSharp
+        m_MethodName: TeleportQueen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7481,8 +7481,8 @@ Transform:
   m_GameObject: {fileID: 1695658097}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -444.7, y: 1.4141904, z: -2.481231}
-  m_LocalScale: {x: 10.885278, y: 10.885278, z: 10.885278}
+  m_LocalPosition: {x: -444.7, y: 1.53, z: -2.481231}
+  m_LocalScale: {x: 6.417339, y: 7.4869204, z: 7.5498104}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 251895661}
@@ -8993,7 +8993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1538075316066998447, guid: 0cab525552ac69d4db7604a3cd7bb0a5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -32.8
+      value: -28.05
       objectReference: {fileID: 0}
     - target: {fileID: 1538075316066998447, guid: 0cab525552ac69d4db7604a3cd7bb0a5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9033,7 +9033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6134699493904568603, guid: 0cab525552ac69d4db7604a3cd7bb0a5, type: 3}
       propertyPath: m_FlipX
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6134699493904568603, guid: 0cab525552ac69d4db7604a3cd7bb0a5, type: 3}
       propertyPath: m_SortingOrder
