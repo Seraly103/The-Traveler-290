@@ -7,7 +7,7 @@ public class Gate : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player") && InventoryManager.instance.hasKey)
+        if(other.CompareTag("Player") && InventoryManager.hasKey)
         {
             popUp.SetActive(true);
         }

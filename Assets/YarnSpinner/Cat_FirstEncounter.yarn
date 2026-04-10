@@ -1,19 +1,24 @@
 ﻿title: Start
 ---
-This is an example of a Yarn Spinner script. Write your dialogue here!
+Cat: A new visitor?
 
 <<declare $has_bow = $bow >= 1>>
 
-<<declare $can_build_chair = $has_enough_materials && $has_required_skill>>
 
-<<if $can_build_chair>>
-  Craftsman: You've got everything you need to build that chair now.
-<<else>>
-  <<if !$has_enough_materials>>
-    Craftsman: You'll need more materials first.
-  <<else>>
-    Craftsman: Your carpentry skills aren't quite there yet.
-  <<endif>>
+<<if $visited_count<1>>
+  Cat: Another lost soul that dropped into our land of mad?
+  Cat: What are the chances you are tied to the girl in blue?
+  -> What girl in blue!? 
+  Lorina: Where is she?
+  Cat: She is lost, but not truly gone. If you look for her, you might actually find her, soul and all.
+  -> What does that mean?!
+  Cat: Each relic tells a story, and the right one will reveal your answer.
+<<endif>>
+
+
+<<if $visited_count>1>>
+  Cat: Tik tok...
+  Cat: You only have so much time.
 <<endif>>
 
 
