@@ -1,11 +1,12 @@
 ﻿title: Start
 ---
-Cat: A new visitor?
-
-<<declare $has_bow = $bow >= 1>>
 
 
-<<if $visited_count<1>>
+
+
+
+<<if visited_count("Start") == 0 >>
+  Cat: A new visitor?
   Cat: Another lost soul that dropped into our land of mad?
   Cat: What are the chances you are tied to the girl in blue?
   -> What girl in blue!? 
@@ -13,10 +14,9 @@ Cat: A new visitor?
   Cat: She is lost, but not truly gone. If you look for her, you might actually find her, soul and all.
   -> What does that mean?!
   Cat: Each relic tells a story, and the right one will reveal your answer.
-<<endif>>
 
 
-<<if $visited_count>1>>
+<<elseif visited_count("Start") >= 1 >>
   Cat: Tik tok...
   Cat: You only have so much time.
 <<endif>>
