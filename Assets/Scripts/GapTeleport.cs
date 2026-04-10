@@ -7,12 +7,22 @@ public class GapTeleport : MonoBehaviour
 {
     public GameObject player;
 
+    public int lvlNumber;
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("RedQueen'sEntrance");
+            if(lvlNumber == 1)
+            {
+                SceneManager.LoadScene("RedQueen'sEntrance");
+            }
+            else if(lvlNumber == 2)
+            {
+                SceneManager.LoadScene("ChesireForest");
+            }
         }
+        
     }
 
    
