@@ -65,7 +65,33 @@ public class InventoryManager : MonoBehaviour
 
     void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         instance = this;
+    }
+
+    void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+        }
+    }
+
+    public static bool TryAddItem(string itemType)
+    {
+        if (instance == null)
+        {
+            Debug.LogError($"InventoryManager is missing. Could not add item '{itemType}'.");
+            return false;
+        }
+
+        instance.AddItem(itemType);
+        return true;
     }
 
     public void AddItem(string itemType)
