@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Alice's House.unity
     guid: 87f2bb02df528aa49a47c72d618907bc
+  - enabled: 1
+    path: Assets/Scenes/SmallDoorRoom.unity
+    guid: b3057932787a8174880cb1a0c34b45e2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 681142b977957de4db5e251db78e989e, type: 2}
