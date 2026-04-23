@@ -9,8 +9,11 @@ public class Collectible : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("TOUCHED");
-            
-            InventoryManager.instance.AddItem(itemType);
+
+            if (!InventoryManager.TryAddItem(itemType))
+            {
+                return;
+            }
 
             Destroy(gameObject);
         }
