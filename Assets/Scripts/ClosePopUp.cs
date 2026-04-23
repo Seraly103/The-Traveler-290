@@ -6,6 +6,8 @@ public class ClosePopUp : MonoBehaviour
 
     public void CloseGate()
     {
-        popUp.SetActive(false);
+        popUp.GetComponent<PopUpAnimation>().PlayClose();
+
+        
     }
 }

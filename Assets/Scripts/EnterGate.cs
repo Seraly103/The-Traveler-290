@@ -6,6 +6,7 @@ public class EnterGate : MonoBehaviour
     public string nextScene;
     public void Enter()
     {
+        
         Debug.Log("Button pressed");
         SceneManager.LoadScene("Combat");
     }
