@@ -14,7 +14,7 @@ public class TurnTrigger : MonoBehaviour
 
     public void TeleportForest()
     {
-        SceneManager.LoadScene("ChesireForest");
+        SceneManager.LoadScene("ChesireForest 1");
     }
         
 
