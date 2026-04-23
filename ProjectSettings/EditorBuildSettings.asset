@@ -5,26 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/QueenEnterence.unity
-    guid: 274911a6325a09f47895421a76bf59f3
-  - enabled: 1
-    path: Assets/Scenes/RedQueen'sEntrance.unity
-    guid: b2bf5125369e1874faafc22b2b316869
-  - enabled: 1
-    path: Assets/Scenes/ChesireForest.unity
-    guid: 39070f35dd69477438bb47d3b8e68f74
-  - enabled: 1
-    path: Assets/Scenes/Combat.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scenes/Alice's House.unity
-    guid: 87f2bb02df528aa49a47c72d618907bc
   - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: 09dcc03c7f680034baee599b18bfc995
+  - enabled: 1
+    path: Assets/Scenes/Alice's House.unity
+    guid: 87f2bb02df528aa49a47c72d618907bc
+  - enabled: 0
+    path: Assets/Scenes/Falling.unity
+    guid: 9a56b6f163c5c5e45b82b9dcb85ff1bd
+  - enabled: 1
+    path: Assets/Scenes/RedQueen'sEntrance.unity
+    guid: b2bf5125369e1874faafc22b2b316869
   m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 681142b977957de4db5e251db78e989e, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 8b614f8ff0b0737448184008e968b8f6, type: 2}
   m_UseUCBPForAssetBundles: 0
