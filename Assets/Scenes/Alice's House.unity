@@ -5081,8 +5081,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1429816855}
   - component: {fileID: 1429816854}
-  - component: {fileID: 1429816853}
-  - component: {fileID: 1429816852}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5090,30 +5088,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1429816852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1429816851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13a77655891918b4d9344622860e1aa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1429816853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1429816851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d1705eaacbbd64e8caadff6f78ea73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1429816854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5127,7 +5101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueRunner: {fileID: 0}
-  nextSceneName: 
+  nextSceneName: RedQueen'sEntrance
 --- !u!4 &1429816855
 Transform:
   m_ObjectHideFlags: 0
@@ -7356,7 +7330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1971755566157777831}
-  lvlNumber: 2
+  lvlNumber: 1
 --- !u!1 &2000392355
 GameObject:
   m_ObjectHideFlags: 0

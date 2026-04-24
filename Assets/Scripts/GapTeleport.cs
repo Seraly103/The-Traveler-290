@@ -19,7 +19,7 @@ public class GapTeleport : MonoBehaviour
             }
             else if(lvlNumber == 2)
             {
-                SceneManager.LoadScene("ChesireForest");
+                SceneManager.LoadScene("ChesireForest 1");
             }
         }
         
