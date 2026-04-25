@@ -14,6 +14,7 @@ public class RabbitMover : MonoBehaviour
     private SpriteRenderer sr;
     public bool facesRightAtRest = false; 
     
+    public bool destroyAtEnd = false;
 
     void Awake()
     {
@@ -41,15 +42,15 @@ public class RabbitMover : MonoBehaviour
             Vector3 currentPos = transform.position;
             Vector3 targetPos = targetPoint.position;
 
-            // lock Y
+            
             targetPos.y = currentPos.y;
 
-            float direction = targetPos.x - currentPos.x;
+            
 
             if (targetPos.x > currentPos.x)
-                sr.flipX = true;   // facing RIGHT (because your sprite is reversed)
+                sr.flipX = true;   
             else
-                sr.flipX = false;  // facing LEFT
+                sr.flipX = false;  
 
             transform.position = Vector3.MoveTowards(
                 currentPos,
@@ -59,7 +60,10 @@ public class RabbitMover : MonoBehaviour
 
             if (currentPoint >= points.Length - 1)
             {
-                Destroy(gameObject);
+                if (destroyAtEnd)
+                {
+                    Destroy(gameObject);
+                }
             }
 
             yield return null;
@@ -74,7 +78,11 @@ public class RabbitMover : MonoBehaviour
         isMoving = false;
 
 
-        
+        sr.flipX = !facesRightAtRest;
+
+        isMoving = false;
+
+
 
     }
 
