@@ -1,4 +1,5 @@
 using UnityEngine;
+using Yarn.Unity;
 
 public class InteractTrigger : MonoBehaviour
 {
@@ -7,10 +8,15 @@ public class InteractTrigger : MonoBehaviour
     private bool playerInRange = false;
 
     public  DialogueManager dialogueManager;
+    
+    public DialogueRunner dialogueRunner;
 
     public string conversationStartNode;
 
-    
+    void Start()
+    {
+        interactPrompt.SetActive(false);
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -42,19 +48,34 @@ public class InteractTrigger : MonoBehaviour
         }
     }
 
-     void Interact()
+    void Interact()
     {
-        
-
-        dialogueManager = FindObjectOfType<DialogueManager>();
-
         Debug.Log("INTERACT CALLED");
 
-        interactPrompt.SetActive(false);
+        if (dialogueRunner == null)
+        {
+            dialogueRunner = FindObjectOfType<DialogueRunner>();
+        }
 
-       
-        
-        dialogueManager.StartDialogue();
-        
+        if (dialogueRunner == null)
+        {
+            Debug.LogError("No DialogueRunner found!");
+            return;
+        }
+
+        string nodeToStart = conversationStartNode;
+
+        if (InventoryManager.note > 0)
+        {
+            nodeToStart = "Note";
+        }
+
+        Debug.Log("Starting node: " + nodeToStart);
+
+        if (!dialogueRunner.IsDialogueRunning)
+        {
+            interactPrompt.SetActive(false);
+            dialogueRunner.StartDialogue(nodeToStart);
+        }
     }
 }

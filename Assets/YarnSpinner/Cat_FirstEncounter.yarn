@@ -1,7 +1,15 @@
-﻿title: Start
+﻿title: Variables
 ---
 
+<<declare $hasNote = false>>
+<<declare $hasRibbon = false>>
 
+===
+
+title: Start
+---
+//<<if $hasRibbon == true>>
+    //<<jump Ribbon>>
 
 
 
@@ -10,16 +18,67 @@
   Cat: Another lost soul that dropped into our land of mad?
   Cat: What are the chances you are tied to the girl in blue?
   -> What girl in blue!? 
-  Lorina: Where is she?
-  Cat: She is lost, but not truly gone. If you look for her, you might actually find her, soul and all.
+    Lorina: Where is she?
+    Cat: She is lost, but not truly gone. If you look for her, you might actually find her, soul and all.
   -> What does that mean?!
-  Cat: Each relic tells a story, and the right one will reveal your answer.
+    Cat: Each relic tells a story, and the right one will reveal your answer.
 
+<<elseif $hasNote == true>>
+    <<jump Note>>
 
-<<elseif visited_count("Start") >= 1 >>
+<<elseif visited_count("Start") >= 1 and not $hasRibbon and not $hasNote >>
   Cat: Tik tok...
   Cat: You only have so much time.
+
+
+      
 <<endif>>
 
 
+===
+
+title: Ribbon
+---
+Cat: Oh…? 
+
+Cat: And what have we here… a ribbon once belonging to the girl in blue?
+
+Lorina: I found it by the queen’s entrance. I know that the queen took her, but the gate is locked. How do I get in?
+
+Cat: Mm... yes, as doors tend to do when one wishes them open.
+
+Cat: By chance, have you tried…unlocking it?
+
+Lorina: Listen, I'm trying to save my sister. I don't have time for this!
+
+Cat: No, you don't, and I suppose she doesn't either
+
+Lorina: ...
+
+Cat: And yet, here you are asking silly questions instead of getting answers.
+
+Lorina: Then stop talking in circles and help me!
+
+Cat: Help you?
+
+Cat: You’re quick to assume that I haven't been doing that this entire time?
+
+Lorina: Then say something useful, please?
+
+Cat: Useful?
+
+Cat: Is that not what I’ve been doing this whole time?
+
+Cat: You’ve already found what she left behind, but not what she lost.
+
+Lorina: What does that even mean?!
+Cat: It means you are still looking at the world only from your perspective.
+Cat: Sometimes to find the truth, you need to grow and shrink, and push things into existence.
+
+===
+
+title: Note
+---
+Lorina: What does that even mean?!
+Cat: It means you are still looking at the world only from your perspective.
 ===

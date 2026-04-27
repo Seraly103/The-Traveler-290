@@ -2,7 +2,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
+using Yarn.Unity;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance;
@@ -91,6 +91,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         instance.AddItem(itemType);
+        
         return true;
     }
 
@@ -124,6 +125,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         UpdateUI();
+        UpdateYarnVariables();
     }
 
     void UpdateUI()
@@ -134,6 +136,19 @@ public class InventoryManager : MonoBehaviour
     
         NoteText.text = note.ToString();
         KeyText.text = hasKey ? "1" : "0";
+    }
+
+    public void UpdateYarnVariables()
+    {
+        Debug.Log("YarnVarriables updated");
+        var yarn = FindObjectOfType<DialogueRunner>();
+
+        if (yarn != null)
+        {
+            yarn.VariableStorage.SetValue("$hasNote", note > 0);
+            yarn.VariableStorage.SetValue("$hasKey", hasKey);
+            yarn.VariableStorage.SetValue("$hasMushroom", mushroom > 0);
+        }
     }
 
     
