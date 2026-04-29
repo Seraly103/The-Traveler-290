@@ -24,6 +24,8 @@ public class InventoryManager : MonoBehaviour
 
     public Image NoteIcon;
 
+    public static bool talkedToCat = false;
+    public static bool mushroomCollected = false;
     void Start()
     {
         // If inventory was already revealed, show the UI elements for collected items

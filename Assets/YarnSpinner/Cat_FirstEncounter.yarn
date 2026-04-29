@@ -4,6 +4,7 @@
 <<declare $hasNote = false>>
 <<declare $hasRibbon = false>>
 <<declare $hasKey = false>>
+<<declare $talkedToCat = false>>
 
 
 ===
@@ -14,6 +15,7 @@ title: Start
 
 
 <<if visited_count("Start") == 0 and not $hasRibbon and not $hasNote>>
+  <<set $talkedToCat = true>>
   Cat: A new visitor?
   Cat: Another lost soul that dropped into our land of mad?
   Cat: What are the chances you are tied to the girl in blue?

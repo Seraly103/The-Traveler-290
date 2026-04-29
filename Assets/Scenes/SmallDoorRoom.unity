@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 263912104}
   - component: {fileID: 263912103}
   m_Layer: 5
-  m_Name: MushroomImg
+  m_Name: RibbonImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -500,7 +500,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4315506946141470425, guid: 1de26a2ca46e859429958906b4c99eb1, type: 3}
+  m_Sprite: {fileID: -7953465434580640417, guid: 8d9a6502df71e684faf8d8efd4a0223d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4317,7 +4317,7 @@ GameObject:
   - component: {fileID: 1202561896}
   - component: {fileID: 1202561895}
   m_Layer: 5
-  m_Name: Mushroom
+  m_Name: Ribbon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8100,10 +8100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72bcd3ffdb9715d41824c377c7eb9303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MushroomText: {fileID: 1202561895}
+  RibbonText: {fileID: 1202561895}
   NoteText: {fileID: 2145898913}
   KeyText: {fileID: 1300440223}
-  MushroomIcon: {fileID: 263912103}
+  RibbonIcon: {fileID: 263912103}
   KeyIcon: {fileID: 623302334}
   NoteIcon: {fileID: 1309716947}
 --- !u!4 &2095124200

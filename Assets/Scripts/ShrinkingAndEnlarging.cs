@@ -26,6 +26,8 @@ public class ShrinkingAndEnlarging : MonoBehaviour
     private float normalHalfHeight;
     private float targetY;
 
+    
+
     void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
@@ -66,8 +68,10 @@ public class ShrinkingAndEnlarging : MonoBehaviour
         if (other.CompareTag("ShrinkMushroom"))
         {
             Shrink();
-            Destroy(other.gameObject);
+            InventoryManager.mushroomCollected = true;
+            other.gameObject.SetActive(false);
         }
+        
         else if (other.CompareTag("GrowMushroom"))
         {
             Enlarge();
