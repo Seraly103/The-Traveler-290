@@ -11,15 +11,15 @@ public class InventoryManager : MonoBehaviour
     private static bool inventoryRevealed = false;
 
     // Static inventory counts so they persist across scenes
-    public static int mushroom;
+    public static int Ribbon;
     public static int note;
     public static bool hasKey;
 
-    public TextMeshProUGUI MushroomText;
+    public TextMeshProUGUI RibbonText;
     public TextMeshProUGUI NoteText;
     public TextMeshProUGUI KeyText;
 
-    public Image MushroomIcon;
+    public Image RibbonIcon;
     public Image KeyIcon;
 
     public Image NoteIcon;
@@ -29,10 +29,10 @@ public class InventoryManager : MonoBehaviour
         // If inventory was already revealed, show the UI elements for collected items
         if (inventoryRevealed)
         {
-            if (mushroom > 0)
+            if (Ribbon > 0)
             {
-                MushroomText.gameObject.SetActive(true);
-                MushroomIcon.gameObject.SetActive(true);
+                RibbonText.gameObject.SetActive(true);
+                RibbonIcon.gameObject.SetActive(true);
             }
             
             if (note > 0)
@@ -53,11 +53,11 @@ public class InventoryManager : MonoBehaviour
         else
         {
             // First time - hide all inventory UI
-            MushroomText.gameObject.SetActive(false);
+            RibbonText.gameObject.SetActive(false);
             KeyText.gameObject.SetActive(false);
             NoteText.gameObject.SetActive(false);
 
-            MushroomIcon.gameObject.SetActive(false);
+            RibbonIcon.gameObject.SetActive(false);
             KeyIcon.gameObject.SetActive(false);
             NoteIcon.gameObject.SetActive(false);
         }
@@ -100,12 +100,12 @@ public class InventoryManager : MonoBehaviour
         // Mark inventory as revealed on first item collection
         inventoryRevealed = true;
 
-        if(itemType == "Mushroom")
+        if(itemType == "Ribbon")
         {
-            mushroom+=1;
-            MushroomText.gameObject.SetActive(true);
-            MushroomIcon.gameObject.SetActive(true);
-            Debug.Log(mushroom);
+            Ribbon+=1;
+            RibbonText.gameObject.SetActive(true);
+            RibbonIcon.gameObject.SetActive(true);
+            Debug.Log(Ribbon);
         }
 
         if(itemType == "Note")
@@ -130,7 +130,7 @@ public class InventoryManager : MonoBehaviour
 
     void UpdateUI()
     {
-        MushroomText.text = mushroom.ToString();
+        RibbonText.text = Ribbon.ToString();
 
         
     
@@ -147,7 +147,7 @@ public class InventoryManager : MonoBehaviour
         {
             yarn.VariableStorage.SetValue("$hasNote", note > 0);
             yarn.VariableStorage.SetValue("$hasKey", hasKey);
-            yarn.VariableStorage.SetValue("$hasMushroom", mushroom > 0);
+            yarn.VariableStorage.SetValue("$hasRibbon", Ribbon > 0);
         }
     }
 

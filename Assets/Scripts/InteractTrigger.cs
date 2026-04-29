@@ -74,6 +74,7 @@ public class InteractTrigger : MonoBehaviour
 
         if (!dialogueRunner.IsDialogueRunning)
         {
+            InventoryManager.instance.UpdateYarnVariables();
             interactPrompt.SetActive(false);
             dialogueRunner.StartDialogue(nodeToStart);
         }
