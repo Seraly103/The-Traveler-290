@@ -1,12 +1,30 @@
 using UnityEngine;
 using Yarn.Unity;
+using System.Collections;
 public class KeyTrigger : MonoBehaviour
 {
     public GameObject keyPrefab;
     public Transform spawnPoint;
     public Transform groundPoint;
+    public static KeyTrigger instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     [YarnCommand("dropKey")]
+    public static void DropKeyCommand()
+    {
+        if (instance != null)
+        {
+            instance.DropKey();
+        }
+        else
+        {
+            Debug.LogError("No KeyDropper in scene!");
+        }
+    }
 
     public void DropKey()
     {
@@ -14,9 +32,9 @@ public class KeyTrigger : MonoBehaviour
         StartCoroutine(DropAnimation(key));
     }
 
-    System.Collections.IEnumerator DropAnimation(GameObject key)
+    IEnumerator DropAnimation(GameObject key)
     {
-        float time = 0;
+        float time = 0f;
         float duration = 0.5f;
 
         Vector3 start = key.transform.position;
@@ -24,12 +42,14 @@ public class KeyTrigger : MonoBehaviour
 
         while (time < duration)
         {
-            key.transform.position = Vector3.Lerp(start, end, time / duration);
+            float t = time / duration;
+            key.transform.position = Vector3.Lerp(start, end, t);
             time += Time.deltaTime;
             yield return null;
         }
 
         key.transform.position = end;
     }
+    
 
 }

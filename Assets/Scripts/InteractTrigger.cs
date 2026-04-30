@@ -53,7 +53,7 @@ public class InteractTrigger : MonoBehaviour
     void Interact()
     {
         Debug.Log("INTERACT CALLED");
-        
+
         if (dialogueRunner == null)
         {
             dialogueRunner = FindObjectOfType<DialogueRunner>();
@@ -65,23 +65,6 @@ public class InteractTrigger : MonoBehaviour
             return;
         }
 
-        string nodeToStart = conversationStartNode;
-
-        if (InventoryManager.note > 0)
-        {
-            nodeToStart = "Note";
-        }
-
-        Debug.Log("Starting node: " + nodeToStart);
-
-        dialogueRunner.onDialogueComplete.AddListener(() =>
-        {
-            MushroomLock mushroomLock = FindObjectOfType<MushroomLock>();
-            if (mushroomLock != null)
-            {
-                mushroomLock.CheckUnlock();
-            }
-        });
         if (!dialogueRunner.IsDialogueRunning)
         {
             InventoryManager.talkedToCat = true;
@@ -90,8 +73,11 @@ public class InteractTrigger : MonoBehaviour
             {
                 InventoryManager.instance.UpdateYarnVariables();
             }
+
             interactPrompt.SetActive(false);
-            dialogueRunner.StartDialogue(nodeToStart);
+
+            Debug.Log("Starting node: " + conversationStartNode);
+            dialogueRunner.StartDialogue(conversationStartNode);
         }
     }
 }

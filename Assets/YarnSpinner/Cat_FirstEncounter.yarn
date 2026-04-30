@@ -26,14 +26,16 @@ title: Start
     Lorina: My sister is alive, and I am getting her out of this madland!
   Cat: Each relic tells a story, and the right one will reveal your answer.
 
+<<elseif $hasRibbon and $hasNote>>
+    <<jump Key>>
+
 <<elseif $hasRibbon and not $hasNote>>
     <<jump Ribbon>>
 
 <<elseif $hasNote and not $hasRibbon>>
     <<jump Note>>
 
-<<elseif $hasRibbon and $hasNote>>
-    <<jump Key>>
+
 
 <<else>>
 

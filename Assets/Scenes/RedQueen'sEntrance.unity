@@ -11694,8 +11694,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1908598551}
   - component: {fileID: 1908598550}
-  - component: {fileID: 1908598549}
   - component: {fileID: 1908598552}
+  - component: {fileID: 1908598553}
   m_Layer: 0
   m_Name: AliceBow_0
   m_TagString: Untagged
@@ -11703,19 +11703,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1908598549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1908598548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e878c43dded7b8c41ba83316bc12ca2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: Ribbon
 --- !u!212 &1908598550
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11832,6 +11819,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 8.73, y: 8.98306}
   m_EdgeRadius: 0
+--- !u!114 &1908598553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908598548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9448e389e5e12b347b019db58c92889a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1950027509
 PrefabInstance:
   m_ObjectHideFlags: 0
