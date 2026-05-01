@@ -78,6 +78,14 @@ public class CombatEncounterController : MonoBehaviour
     [Header("Enemy Turn")]
     [SerializeField] private Vector2Int enemyDamageRange = new Vector2Int(5, 15);
 
+    [Header("Queen Phase")]
+    [SerializeField] private Vector2 queenChargeTimeRange = new Vector2(0.8f, 2.0f);
+    [SerializeField] private float queenDodgeWindowDuration = 0.7f;
+    [SerializeField] private Vector2Int queenAttackDamageRange = new Vector2Int(10, 20);
+    [SerializeField] private Vector2Int queenCounterDamageRange = new Vector2Int(15, 28);
+    [SerializeField] private float queenDodgeBarWidth = 220f;
+    [SerializeField] private float queenDodgeBarHeight = 14f;
+
     [Header("UI - Damage Feedback")]
     [SerializeField] private Texture2D damageIcon;
     [SerializeField] private float damagePopupLifetime = 0.85f;
@@ -105,6 +113,8 @@ public class CombatEncounterController : MonoBehaviour
         WaitForClick,
         EnemyTurn,
         Animating,
+        QueenCharging,
+        QueenDodgeWindow,
         Victory,
         Defeat
     }
@@ -116,6 +126,8 @@ public class CombatEncounterController : MonoBehaviour
     private EnemyUnit hoveredTarget;
     private float stateTimer;
     private string battleMessage = string.Empty;
+
+    private float queenChargeTotal;
 
     private readonly List<DamagePopup> damagePopups = new List<DamagePopup>();
     private readonly Dictionary<EnemyUnit, Rect> enemyScreenRects = new Dictionary<EnemyUnit, Rect>();
@@ -250,6 +262,36 @@ public class CombatEncounterController : MonoBehaviour
             if (stateTimer <= 0f)
             {
                 ResolveEnemyTurn();
+            }
+            return;
+        }
+
+        if (currentState == CombatState.QueenCharging)
+        {
+            stateTimer -= Time.deltaTime;
+            if (stateTimer <= 0f)
+            {
+                stateTimer = 0f;
+                currentState = CombatState.QueenDodgeWindow;
+                battleMessage = "DODGE! Press Space or click!";
+            }
+            return;
+        }
+
+        if (currentState == CombatState.QueenDodgeWindow)
+        {
+            stateTimer += Time.deltaTime;
+
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftArrow) ||
+                Input.GetKeyDown(KeyCode.RightArrow) || Input.GetMouseButtonDown(0))
+            {
+                ResolveQueenDodge(true);
+                return;
+            }
+
+            if (stateTimer >= queenDodgeWindowDuration)
+            {
+                ResolveQueenDodge(false);
             }
             return;
         }
@@ -434,8 +476,120 @@ public class CombatEncounterController : MonoBehaviour
         selectedTarget = null;
         hoveredTarget = null;
         RefreshAllUnitHighlights();
+
+        if (!cardSoldierA.IsAlive && !cardSoldierB.IsAlive && redQueen.IsAlive)
+        {
+            BeginQueenPhase();
+            yield break;
+        }
+
         currentState = CombatState.EnemyTurn;
         stateTimer = 1.0f;
+    }
+
+    private void BeginQueenPhase()
+    {
+        battleMessage = "The Red Queen steps forward!";
+        EnterQueenCharging();
+    }
+
+    private void EnterQueenCharging()
+    {
+        queenChargeTotal = UnityEngine.Random.Range(queenChargeTimeRange.x, queenChargeTimeRange.y);
+        stateTimer = queenChargeTotal;
+        currentState = CombatState.QueenCharging;
+    }
+
+    private void ResolveQueenDodge(bool playerDodged)
+    {
+        if (playerDodged)
+        {
+            float dodgeSpeed = Mathf.Clamp01(1f - (stateTimer / Mathf.Max(0.01f, queenDodgeWindowDuration)));
+            int counterDamage = Mathf.RoundToInt(Mathf.Lerp(queenCounterDamageRange.x, queenCounterDamageRange.y, dodgeSpeed));
+            currentState = CombatState.Animating;
+            StartCoroutine(ExecuteQueenDodgeCounterSequence(counterDamage));
+        }
+        else
+        {
+            int damage = UnityEngine.Random.Range(queenAttackDamageRange.x, queenAttackDamageRange.y + 1);
+            currentState = CombatState.Animating;
+            StartCoroutine(ExecuteQueenHitSequence(damage));
+        }
+    }
+
+    private System.Collections.IEnumerator ExecuteQueenDodgeCounterSequence(int counterDamage)
+    {
+        GameObject playerRoot = GetPlayerVisualRootObject();
+        Vector3 originalPlayerPos = Vector3.zero;
+        Transform attackSpot = playerAttackTeleportSpotQueen != null ? playerAttackTeleportSpotQueen : playerAttackTeleportSpotSoldierA;
+
+        if (playerRoot != null && attackSpot != null)
+        {
+            originalPlayerPos = playerRoot.transform.position;
+            PlaySfx(playerAudioSource, teleportSfx, teleportSfxVolume);
+            playerRoot.transform.position = GetTeleportPositionKeepingDepth(attackSpot.position, originalPlayerPos.z);
+        }
+
+        battleMessage = "Dodged! Counter-attack!";
+        yield return new WaitForSeconds(preAttackTeleportHold);
+
+        PlaySfx(playerAudioSource, attackSfx, attackSfxVolume);
+        int dealt = ApplyDamageToEnemy(redQueen, counterDamage);
+        battleMessage = "Counter hit the Red Queen for " + dealt + "!";
+
+        if (playerRoot != null && attackSpot != null)
+        {
+            playerRoot.transform.position = originalPlayerPos;
+        }
+
+        yield return new WaitForSeconds(postAttackReturnDelay);
+
+        if (PlayerWon)
+        {
+            currentState = CombatState.Victory;
+            battleMessage = "Red Queen defeated!";
+            yield break;
+        }
+
+        EnterQueenCharging();
+    }
+
+    private System.Collections.IEnumerator ExecuteQueenHitSequence(int damage)
+    {
+        Vector3 originalQueenPos = Vector3.zero;
+        bool moved = false;
+
+        if (redQueen.visualRoot != null && enemyAttackTeleportSpot != null)
+        {
+            originalQueenPos = redQueen.visualRoot.transform.position;
+            moved = true;
+            PlaySfx(playerAudioSource, teleportSfx, teleportSfxVolume);
+            redQueen.visualRoot.transform.position = GetTeleportPositionKeepingDepth(enemyAttackTeleportSpot.position, originalQueenPos.z);
+        }
+
+        battleMessage = "Too slow! The Red Queen strikes!";
+        yield return new WaitForSeconds(preAttackTeleportHold);
+
+        PlaySfx(playerAudioSource, attackSfx, attackSfxVolume);
+        playerHealth = Mathf.Max(0, playerHealth - damage);
+        SpawnPlayerDamagePopup(damage);
+
+        if (moved)
+        {
+            redQueen.visualRoot.transform.position = originalQueenPos;
+        }
+
+        yield return new WaitForSeconds(postAttackReturnDelay);
+
+        if (playerHealth <= 0)
+        {
+            currentState = CombatState.Defeat;
+            battleMessage = "The Red Queen defeated you.";
+            yield break;
+        }
+
+        battleMessage = "The Red Queen hit for " + damage + ". Brace yourself...";
+        EnterQueenCharging();
     }
 
     private System.Collections.IEnumerator ExecuteEnemyAttackSequence(EnemyUnit attackingEnemy, int damage)
@@ -906,6 +1060,11 @@ public class CombatEncounterController : MonoBehaviour
             DrawActionPanel();
         }
 
+        if (currentState == CombatState.QueenCharging || currentState == CombatState.QueenDodgeWindow)
+        {
+            DrawQueenPhaseUI();
+        }
+
         if (currentState == CombatState.Victory || currentState == CombatState.Defeat)
         {
             DrawRestartButton();
@@ -1140,6 +1299,45 @@ public class CombatEncounterController : MonoBehaviour
                 fontSize = 18,
                 fontStyle = FontStyle.Bold
             };
+        }
+    }
+
+    private void DrawQueenPhaseUI()
+    {
+        EnsureGuiResources();
+
+        float barX = (Screen.width - queenDodgeBarWidth) * 0.5f;
+        float barY = Screen.height * 0.35f;
+
+        if (currentState == CombatState.QueenCharging)
+        {
+            float progress = queenChargeTotal > 0f ? Mathf.Clamp01(1f - (stateTimer / queenChargeTotal)) : 1f;
+            DrawSolidRect(new Rect(barX, barY, queenDodgeBarWidth, queenDodgeBarHeight), healthBackColor);
+            DrawSolidRect(new Rect(barX, barY, queenDodgeBarWidth * progress, queenDodgeBarHeight), new Color(0.8f, 0.2f, 0.85f));
+
+            GUIStyle labelStyle = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter };
+            GUI.Label(new Rect(barX, barY - 22f, queenDodgeBarWidth, 20f), "Queen charging...", labelStyle);
+        }
+
+        if (currentState == CombatState.QueenDodgeWindow)
+        {
+            float remaining = Mathf.Clamp01(1f - (stateTimer / Mathf.Max(0.01f, queenDodgeWindowDuration)));
+            DrawSolidRect(new Rect(barX, barY + queenDodgeBarHeight + 4f, queenDodgeBarWidth, queenDodgeBarHeight), healthBackColor);
+            DrawSolidRect(new Rect(barX, barY + queenDodgeBarHeight + 4f, queenDodgeBarWidth * (1f - remaining), queenDodgeBarHeight), new Color(0.95f, 0.6f, 0.1f));
+
+            GUIStyle dodgeStyle = new GUIStyle(GUI.skin.label)
+            {
+                fontSize = 36,
+                fontStyle = FontStyle.Bold,
+                alignment = TextAnchor.MiddleCenter,
+                normal = { textColor = new Color(1f, 0.25f, 0.1f) }
+            };
+
+            float alpha = 1f - remaining * 0.35f;
+            Color prev = GUI.color;
+            GUI.color = new Color(1f, 1f, 1f, alpha);
+            GUI.Label(new Rect(0f, barY - 50f, Screen.width, 50f), "DODGE!", dodgeStyle);
+            GUI.color = prev;
         }
     }
 
