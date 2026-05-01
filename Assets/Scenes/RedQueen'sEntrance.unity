@@ -13347,6 +13347,9 @@ MonoBehaviour:
   smallMultiplier: 0.5
   largeMultiplier: 2
   scaleSpeed: 3
+  shrinkSfx: {fileID: 8300000, guid: 927eed18e92bffd48b5f41c9852cafa4, type: 3}
+  enlargeSfx: {fileID: 8300000, guid: 26c44e178fa01aa4699076fa34c1bc9e, type: 3}
+  sfxVolume: 1
 --- !u!1001 &2950683649822351769
 PrefabInstance:
   m_ObjectHideFlags: 0

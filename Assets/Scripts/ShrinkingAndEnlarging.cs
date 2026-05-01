@@ -18,6 +18,13 @@ public class ShrinkingAndEnlarging : MonoBehaviour
     [Header("Transition")]
     public float scaleSpeed = 3f;
 
+    [Header("SFX")]
+    public AudioClip shrinkSfx;
+    public AudioClip enlargeSfx;
+    [Range(0f, 1f)] public float sfxVolume = 1f;
+
+    private AudioSource audioSource;
+
     public static SizeState CurrentSize { get; private set; } = SizeState.Normal;
 
     private Vector3 normalScale;
@@ -36,6 +43,14 @@ public class ShrinkingAndEnlarging : MonoBehaviour
         normalScale = transform.localScale;
         CurrentSize = SizeState.Normal;
         targetScale = normalScale;
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+            audioSource.spatialBlend = 0f;
+        }
 
         var sr = GetComponent<SpriteRenderer>();
         normalHalfHeight = sr != null ? sr.bounds.extents.y : 0f;
@@ -84,6 +99,7 @@ public class ShrinkingAndEnlarging : MonoBehaviour
         CurrentSize = SizeState.Small;
         targetScale = normalScale * smallMultiplier;
         SetTargetY(targetScale);
+        PlaySfx(shrinkSfx);
         Debug.Log("Alice shrank!");
     }
 
@@ -92,7 +108,16 @@ public class ShrinkingAndEnlarging : MonoBehaviour
         CurrentSize = SizeState.Large;
         targetScale = normalScale * largeMultiplier;
         SetTargetY(targetScale);
+        PlaySfx(enlargeSfx);
         Debug.Log("Alice enlarged!");
+    }
+
+    private void PlaySfx(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(clip, sfxVolume);
+        }
     }
 
     public void ResetSize()
